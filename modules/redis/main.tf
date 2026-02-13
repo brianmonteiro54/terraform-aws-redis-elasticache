@@ -62,8 +62,11 @@ resource "aws_elasticache_replication_group" "this" {
   tags = merge(local.common_tags, { Name = local.replication_group_id })
 
   lifecycle {
-    ignore_changes = [engine_version]
+    ignore_changes        = [engine_version]
+    create_before_destroy = true
   }
+
+
 
   depends_on = [
     aws_elasticache_subnet_group.this,
