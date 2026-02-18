@@ -150,7 +150,7 @@ variable "auth_token" {
   sensitive   = true
 
   validation {
-    condition     = var.auth_token == null || (length(var.auth_token) >= 16 && length(var.auth_token) <= 128)
+    condition     = var.auth_token == null || try(length(var.auth_token) >= 16 && length(var.auth_token) <= 128, false)
     error_message = "Auth token must be between 16 and 128 characters."
   }
 }
