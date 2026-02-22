@@ -23,3 +23,8 @@ AVD-AWS-0050
 # The module allows specifying engine_version — always pin to the latest
 # supported version (7.x) and keep auto_minor_version_upgrade = true.
 AVD-AWS-0051
+
+# Security group egress "0.0.0.0/0" may be required to allow outbound traffic (DNS/updates/telemetry).
+# In this module, the rule is configurable via security_group_egress_rules; in production, restrict cidr_blocks
+# or use prefix_list_ids / security_group_id as needed for the destination.
+AWS-0104
