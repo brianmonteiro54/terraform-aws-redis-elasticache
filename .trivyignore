@@ -1,0 +1,25 @@
+# =============================================================================
+# Trivy Ignore File
+# Add check IDs here to suppress known/accepted findings.
+# Format: AVD-AWS-XXXX or one ID per line with optional comment.
+# =============================================================================
+
+# KMS key policy requires root account access — this is an AWS requirement
+# for KMS key administration and is already skip-annotated in kms.tf.
+AVD-AWS-0065
+AVD-AWS-0066
+
+# ElastiCache replication group not using a customer-managed KMS key.
+# The module defaults to AWS-managed encryption (create_kms_key = false by default).
+# Set create_kms_key = true or provide kms_key_arn for a CMK in production.
+AVD-AWS-0049
+
+# Redis AUTH token not set. This finding is expected when auth_token_enabled = false
+# (e.g., when using RBAC via user_group_ids instead of a shared token).
+# Set auth_token_enabled = true and provide a strong auth_token for production.
+AVD-AWS-0050
+
+# ElastiCache replication group uses a version with known vulnerabilities.
+# The module allows specifying engine_version — always pin to the latest
+# supported version (7.x) and keep auto_minor_version_upgrade = true.
+AVD-AWS-0051
