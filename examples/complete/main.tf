@@ -59,8 +59,8 @@ module "redis" {
   # ---------------------------------------------------
   # Encryption
   # ---------------------------------------------------
-  enable_encryption        = true
-  create_kms_key           = true   # Creates a CMK automatically
+  enable_encryption          = true
+  create_kms_key             = true # Creates a CMK automatically
   transit_encryption_enabled = true
 
   # ---------------------------------------------------
@@ -89,13 +89,13 @@ module "redis" {
   # ---------------------------------------------------
   # Parameter Group — Redis 7 with sensible defaults
   # ---------------------------------------------------
-  create_parameter_group  = true
-  parameter_group_family  = "redis7"
+  create_parameter_group = true
+  parameter_group_family = "redis7"
 
   parameters = [
     {
       name  = "maxmemory-policy"
-      value = "allkeys-lru"   # Evict least-recently-used keys when memory is full
+      value = "allkeys-lru" # Evict least-recently-used keys when memory is full
     }
   ]
 
@@ -126,8 +126,8 @@ module "redis" {
   alarm_memory_threshold_period             = 300
   alarm_memory_threshold_evaluation_periods = 2
 
-  enable_evictions_alarm       = true
-  alarm_evictions_threshold    = 1000
+  enable_evictions_alarm          = true
+  alarm_evictions_threshold       = 1000
   alarm_replication_lag_threshold = 30
 
   # ---------------------------------------------------
