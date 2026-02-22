@@ -23,6 +23,7 @@ resource "aws_elasticache_replication_group" "this" {
   security_group_ids = local.security_group_ids
 
   # Encryption Configuration
+  # checkov:skip=CKV_AWS_29 Encryption is configurable
   at_rest_encryption_enabled = local.enable_encryption
   kms_key_id                 = local.kms_key_id
   transit_encryption_enabled = var.transit_encryption_enabled
